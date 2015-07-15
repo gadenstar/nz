@@ -1,9 +1,7 @@
-<?php
-?><!DOCTYPE html>
+<!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <?php
 global $mk_options;
-
 $post_id = global_get_post_id();
 ?>
 <head>
