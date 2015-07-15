@@ -20,7 +20,7 @@ $post_id = global_get_post_id();
 <meta name="renderer" content="webkit">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 <meta http-equiv="Cache-Control" content="no-siteapp" />
-lsdfhlk
+
 <?php if ( $mk_options['custom_favicon'] ) : ?>
   <link rel="shortcut icon" href="<?php echo $mk_options['custom_favicon']; ?>"  />
 <?php else : ?>
