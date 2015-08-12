@@ -102,6 +102,13 @@ $theme_options_blog = array(
         "type" => "toggle"
     ),
     array(
+        "name" => __("转载声明", "mk_framework"),
+        "desc" => __("是否在文章底部显示转载声明,默认为显示.", "mk_framework"),
+        "id" => "diable_single_carried",
+        "default" => 'true',
+        "type" => "toggle"
+    ),
+    array(
         "name" => __("Recommended Posts", "mk_framework"),
         "desc" => __("Using this option you can Show/Hide Recommended Posts section inside your single post item.", "mk_framework"),
         "id" => "enable_single_related_posts",
@@ -187,7 +194,7 @@ $theme_options_blog = array(
         "default" => 'true',
         "type" => "toggle"
     ),
-   
+
     array(
         "name" => __("Pagination Style", "mk_framework"),
         "id" => "archive_pagination_style",

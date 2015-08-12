@@ -356,11 +356,11 @@ Chosen Plugin
 ** Non-safe fonts type change
 -------------------------------------------------------------*/;
 
-	if (jQuery('#special_fonts_type_1').val() == 'google') { 
+	if (jQuery('#special_fonts_type_1').val() == 'google') {
 		jQuery('#google_font_subset_1_wrapper').show();
 	} else {
 		jQuery('#google_font_subset_1_wrapper').hide();
-	} 
+	}
 
 	jQuery("#special_fonts_list_1").change(function() {
 
@@ -376,11 +376,11 @@ Chosen Plugin
 
 	}).change();
 
-	if (jQuery('#special_fonts_type_2').val() == 'google') { 
+	if (jQuery('#special_fonts_type_2').val() == 'google') {
 		jQuery('#google_font_subset_2_wrapper').show();
 	} else {
 		jQuery('#google_font_subset_2_wrapper').hide();
-	} 
+	}
 
 	jQuery("#special_fonts_list_2").change(function() {
 
@@ -904,7 +904,25 @@ Posts types metaboxes to show the selected items
 	}
 	mk_posttype_metabox();
 
+	function nz_posttype_metabox() {
+		post_choices = jQuery('#disable_share2_wrapper');
+		post_choices.hide();
+		source_val = jQuery('#disable_share').val();
+		if (source_val == 'true') {
+			jQuery('#disable_share2_wrapper').show();
+		}
 
+
+		jQuery('#disable_share').change(function() {
+			this_val = jQuery(this).val();
+			post_choices.hide();
+			if (this_val == 'true') {
+				jQuery('#disable_share2_wrapper').show();
+			}
+		});
+
+	}
+	nz_posttype_metabox();
 
 	/*
 **
@@ -1440,7 +1458,7 @@ jQuery(document).ready(function() {
 			event.preventDefault();
 
 		}
-	}); 
+	});
 
 });
 

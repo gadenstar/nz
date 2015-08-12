@@ -16,7 +16,7 @@ class mkOptionGenerator {
 
     function render() {
 
-        $this->saved_options = get_option( THEME_OPTIONS );
+        $this->saved_options = get_option( 'THEME_OPTIONS' );
 
 ?>
 
@@ -470,7 +470,7 @@ class mkOptionGenerator {
         echo '<div class="mk-groupset-above">'.$value['above_content'] .'</div>';
         echo '<div class="mk-groupset-holder">';
         echo '<h3>'.$value['heading'] .'</h3>';
-        
+
     }
 
     function groupset_end( $value ) {
@@ -552,7 +552,7 @@ class mkOptionGenerator {
 
         echo '<select class="mk-select" name="' . $value['id'] . '" id="' . $value['id'] . '">';
         if(!isset( $value['placeholder'] )) {
-            echo '<option value="">'. __( 'Select Option', 'mk_framework' ).'</option>';    
+            echo '<option value="">'. __( 'Select Option', 'mk_framework' ).'</option>';
         }
         if ( !empty( $value['options'] ) && is_array( $value['options'] ) ) {
             foreach ( $value['options'] as $key => $option ) {
@@ -744,34 +744,34 @@ class mkOptionGenerator {
             'apple',
             'bebo',
             'behance',
-            'blogger', 
-            'delicious', 
-            'deviantart', 
-            'digg', 
-            'dribbble', 
-            'dropbox', 
-            'envato', 
-            'facebook', 
-            'flickr', 
-            'github', 
-            'google', 
-            'googleplus', 
-            'lastfm', 
+            'blogger',
+            'delicious',
+            'deviantart',
+            'digg',
+            'dribbble',
+            'dropbox',
+            'envato',
+            'facebook',
+            'flickr',
+            'github',
+            'google',
+            'googleplus',
+            'lastfm',
             'linkedin',
-            'instagram', 
-            'myspace', 
-            'path', 
-            'pinterest', 
-            'reddit', 
-            'rss', 
-            'skype', 
-            'stumbleupon', 
-            'tumblr', 
-            'twitter', 
-            'vimeo', 
-            'wordpress', 
-            'yahoo', 
-            'yelp', 
+            'instagram',
+            'myspace',
+            'path',
+            'pinterest',
+            'reddit',
+            'rss',
+            'skype',
+            'stumbleupon',
+            'tumblr',
+            'twitter',
+            'vimeo',
+            'wordpress',
+            'yahoo',
+            'yelp',
             'youtube',
             'xing',
             'imdb',

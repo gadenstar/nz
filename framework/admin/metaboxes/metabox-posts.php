@@ -77,7 +77,7 @@ $options = array(
       ),
       array(
             "name" => __("Page Heading Subtitle", "mk_framework"),
-            "desc" => __("You can add a subtitle to header section of this page using this option.", "mk_framework"),            
+            "desc" => __("You can add a subtitle to header section of this page using this option.", "mk_framework"),
             "id" => "_page_introduce_subtitle",
             "rows" => "3",
             "default" => "",
@@ -151,7 +151,6 @@ $options = array(
     ),
     "type" => "select"
   ),
-
   array(
     "name" => __( "Gallery Images", "mk_framework" ),
     "desc" => __( "You can re-arrange images by drag and drop as well as deleting images.", "mk_framework" ),

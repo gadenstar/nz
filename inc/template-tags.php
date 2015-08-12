@@ -76,7 +76,6 @@ function the_post_navigation() {
 	}
 	?>
 	<nav class="navigation post-navigation" role="navigation">
-		<h2 class="screen-reader-text"><?php esc_html_e( 'Post navigation', 'nz' ); ?></h2>
 		<div class="nav-links">
 			<?php
 				previous_post_link( '<div class="nav-previous">%link</div>', '%title' );
@@ -88,35 +87,27 @@ function the_post_navigation() {
 }
 endif;
 
-if ( ! function_exists( 'nz_posted_on' ) ) :
+
+if ( ! function_exists( 'nz_top_meta' ) ) :
 /**
- * Prints HTML with meta information for the current post-date/time and author.
+ * Prints HTML with meta information for the categories, tags and comments.
  */
-function nz_posted_on() {
-	$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
-	if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-		$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
+function nz_top_meta() {
+	// Hide category and tag text for pages.
+	echo '<time datetime="'.get_the_date('Y-m-d').'" itemprop="datePublished">'.get_the_date('Y/m/d').'</time>';
+	if ( 'post' == get_post_type() ) {
+		/* translators: used between list items, there is a space after the comma */
+		$categories_list = get_the_category_list( esc_html__( ', ', 'nz' ) );
+		if ( $categories_list && nz_categorized_blog() &&  is_single()) {
+			printf( ' - <span class="cat-links">' . esc_html__( '%1$s', 'nz' ) . '</span>', $categories_list ); // WPCS: XSS OK.
+		}
 	}
 
-	$time_string = sprintf( $time_string,
-		esc_attr( get_the_date( 'c' ) ),
-		esc_html( get_the_date() ),
-		esc_attr( get_the_modified_date( 'c' ) ),
-		esc_html( get_the_modified_date() )
-	);
-
-	$posted_on = sprintf(
-		esc_html_x( 'Posted on %s', 'post date', 'nz' ),
-		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
-	);
-
-	$byline = sprintf(
-		esc_html_x( 'by %s', 'post author', 'nz' ),
-		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
-	);
-
-	echo '<span class="posted-on">' . $posted_on . '</span><span class="byline"> ' . $byline . '</span>'; // WPCS: XSS OK.
-
+	if ( comments_open()) {
+		echo ' - ';
+		comments_popup_link( esc_html__( 'Leave a comment', 'nz' ), esc_html__( '1 Comment', 'nz' ), esc_html__( '% Comments', 'nz' ) );
+	}
+	//edit_post_link( esc_html__( 'Edit', 'nz' ), '<span class="edit-link">', '</span>' );
 }
 endif;
 

@@ -15,7 +15,7 @@ add_filter('get_avatar', 'get_ssl_avatar');
 if (!function_exists('mk_theme_options')) {
      function mk_theme_options()
      {
-          $GLOBALS['mk_options'] = get_option(THEME_OPTIONS);
+          $GLOBALS['mk_options'] = get_option('THEME_OPTIONS');
 
           if(empty($GLOBALS['mk_options'])) {
             $theme_options = array();

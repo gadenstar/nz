@@ -1564,10 +1564,10 @@
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
 }
-/* 
+/*
 **
 **
-** Masterkey Header 
+** Masterkey Header
 -------------------------------------------------------------*/
 .main-left-section {
   width: 100px;
@@ -1587,7 +1587,7 @@
   display: block;
   margin-bottom: 20px;
 }
-/* 
+/*
 **
 **
 ** Masterkey Header
@@ -1622,7 +1622,7 @@
   font-weight: inherit !important;
   color: inherit !important;
 }
-/* 
+/*
 **
 **
 ** Main Navigator
@@ -1669,7 +1669,7 @@
   min-height: 700px;
   display: block;
 }
-/* 
+/*
 **
 **
 ** Sub Navigator
@@ -1711,7 +1711,7 @@
   top: 30px;
   right: 30px;
 }
-/* 
+/*
 **
 **
 ** General Options Layouts
@@ -2222,4 +2222,13 @@ you can use the generic selector below, but it's slower:
   text-transform: uppercase;
   color: #878787;
   font-size: 11px;
+}
+
+#disable_share_media_wrapper .mk-select-radio  {
+  overflow:hidden;
+}
+#disable_share_media_wrapper .mk-select-radio label {
+  width: 20%;
+  float: left;
+  overflow:hidden;
 }

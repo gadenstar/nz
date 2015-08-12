@@ -33,6 +33,7 @@ add_action( 'responsive_search', 'mk_responsive_search' );
 add_action('side_dashboard', 'mk_side_dashboard');
 
 add_action( 'header_warp', 'nz_header_navigation' );
+add_action( 'header_banner', 'nz_header_banner' );
 
 
 /**
@@ -50,37 +51,66 @@ if ( !function_exists( 'mk_header_toolbar_date' ) ) {
 if ( !function_exists( 'nz_header_navigation' ) ) {
 	function nz_header_navigation() {
 		global $mk_options;
-		$nz_option = 'boxed';
-		echo '<header id="nz-header" class="">';
-		if ($nz_option=='boxed') {
-			echo '<div class="uk-container uk-container-center"><div class="uk-flex uk-flex-middle uk-flex-center uk-flex-space-between">';
+
+		$header_grid_start = ($mk_options['header_grid'] == 'true') ? '<div class="uk-container uk-container-center">' : '';
+		$header_grid_end = ($mk_options['header_grid'] == 'true') ? '</div>' : '';
+		$header_width_class = ($mk_options['header_grid'] == 'true') ? 'boxed-header' : 'full-header';
+
+		$style = "main_menu nav_style_".$mk_options['main_nav_hover'];
+
+		echo '<header id="nz-header" class="'.$header_width_class.'">'.$header_grid_start.'<div class="uk-flex uk-flex-middle uk-flex-center uk-flex-space-between">';
 			?>
 		<div class="header-logo">
 		    <a href="<?php echo home_url( '/' ); ?>" title="<?php bloginfo( 'name' ); ?>"><img alt="<?php bloginfo( 'name' ); ?>" src="<?php echo THEME_IMAGES; ?>/jupiter-logo.png" /></a>
 		</div>
 <?php
+			//$menu_location = 'primary-menu';
 			echo wp_nav_menu( array(
-					'theme_location' => $menu_location,
+					//'theme_location' => $menu_location,
 					'container' => 'nav',
 					'container_id' => 'nz-main-navigation ',
-					'container_class' => 'main_menu ',
+					'container_class' => $style,
 					'menu_class' => 'main-navigation-ul',
 					'echo' => false,
 					'fallback_cb' => 'link_to_menu_editor',
 				//	'walker' => new mk_artbees_walker
 				) );
-			echo '</div></div>';
-		} else {
-			# code...
-		}
-		echo '</header>';
-
+			echo $header_grid_end.'</div></header>';
 	}
 }
 
 
+if ( !function_exists( 'nz_header_banner' ) ) {
+	function nz_header_banner() {
+		?>
+		<div class="banner">
+        <?php
+					$page_title = 'Welcome to '.get_bloginfo( 'name' );
+					if (!is_home()) {
+					 	$page_title = get_the_title();
+					 	if (!is_page( ) && !is_single( )) {
+					 		$page_title = get_the_archive_title();
+					 	}
+					}
+					$cat_list = (is_single()) ? '<h4 class="uk-text-contrast">'.get_the_category_list( esc_html__( ', ', 'nz' ) ).'</h4>' : '' ;
+      		$full_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full');
 
+      		?>
+      		<div class="banner-inner uk-margin uk-text-contrast uk-text-center " data-uk-parallax="{bgp:'50,60'}" style="background-image: url(&quot;<?php print_r($full_image_url[0]) ; ?>&quot;); ">
+      		<div class="uk-container-center uk-container uk-vertical-align uk-height-1-1 ">
+          	<div class="banner-content uk-width-medium-1-1 uk-position-relative uk-position-z-index uk-vertical-align-middle">
+          			<?php echo $cat_list; ?>
+          			<h1 class="uk-text-contrast"><?php echo $page_title; ?></h1>
+          	</div>
+          	</div>
+          </div>
+      	<?php
 
+      ?>
+		</div>
+<?php
+	}
+}
 
 
 

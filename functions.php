@@ -48,7 +48,7 @@ class Theme
 
       define( "UK_JS", get_template_directory_uri() . "/framework/uikit/js" );
       define( "UK_JS_COMPONENT_PATH", get_template_directory() . "/framework/uikit/js/components/" );
-      define( "UK_JS_COMPONENT_DIR", get_template_directory_uri() . "/framework/uikit/js/components/");
+      define( "UK_JS_COMPONENT_DIR", get_template_directory_uri() . "/framework/uikit/js/components");
       define( "UK_JS_CORE_PATH", get_template_directory() . '/framework/uikit/js/core/' );
       define( "UK_JS_CORE_DIR", get_template_directory_uri() . '/framework/uikit/js/core/' );
 
@@ -75,6 +75,12 @@ class Theme
 
     	require_once(THEME_ACTIONS . "/general.php");
     	require_once(THEME_ACTIONS . "/header.php");
+      require_once(THEME_ACTIONS . "/post.php");
+
+
+      require_once(THEME_ACTIONS . "/infinite-scroll.php");
+
+
     	if (is_admin()) {
             include_once(THEME_ADMIN . '/general/general-functions.php');
             include_once(THEME_ADMIN . '/general/mega-menu.php');
@@ -84,7 +90,8 @@ class Theme
             include_once(THEME_ADMIN . '/admin-panel/masterkey-ajax-calls.php');
         }
     }
-    function plugins(){}
+    function plugins(){
+    }
     function supports(){}
     function widgets(){}
     function post_types(){}
@@ -97,7 +104,10 @@ class Theme
 
         add_submenu_page( 'themes.php', 'Install Templates', 'Install Templates', 'manage_options', 'demo-importer', array( &$this,'_load_demo_content_page') );
     }
-    function add_metaboxes(){}
+    function add_metaboxes(){
+      include_once(THEME_GENERATORS . '/metabox-generator.php');
+      include_once(THEME_METABOXES . '/metabox-posts.php');
+    }
     function theme_activated(){
     	  if ('themes.php' == basename($_SERVER['PHP_SELF']) && isset($_GET['activated']) && $_GET['activated'] == 'true') {
           update_option('woocommerce_enable_lightbox', "no");
@@ -163,8 +173,8 @@ function nz_widgets_init() {
 		'description'   => '',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
-		'before_title'  => '<h1 class="widget-title">',
-		'after_title'   => '</h1>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
 	) );
 }
 add_action( 'widgets_init', 'nz_widgets_init' );
