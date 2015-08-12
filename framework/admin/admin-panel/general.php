@@ -132,6 +132,13 @@ $theme_options_general = array(
         "type" => "toggle"
     ),
     array(
+        "name" => __("Infinite Scroll", "mk_framework"),
+        "desc" => __("You can disable breadcrumb navigation globally using this option, or you may need to disable it in a page locally.", "mk_framework"),
+        "id" => "infinite-scroll",
+        "default" => 'false',
+        "type" => "toggle"
+    ),
+    array(
         "name" => __("Smooth Scroll", "mk_framework"),
         "desc" => __("If you enable this option page scrolling will have smooth with easing effect.", "mk_framework"),
         "id" => "disable_smoothscroll",
@@ -555,6 +562,38 @@ $theme_options_general = array(
             "disable" => __('Disable', "mk_framework")
         ),
         "type" => "dropdown"
+    ),
+    array(
+        "heading" => __("社会分享设置", "mk_framework"),
+        "above_content" => '',
+        "type" => "groupset"
+    ),
+    array(
+        "name" => __("开启文章/页面分享", "mk_framework"),
+        "desc" => __("You can enable preloader globally for all pages of the site, or enable it from page/post metaboxes for a specific page.", "mk_framework"),
+        "id" => "disable_share",
+        "default" => 'false',
+        "type" => "toggle"
+    ),
+    array(
+        "name" => __("分享计数", "mk_framework"),
+        "desc" => __("You can enable preloader globally for all pages of the site, or enable it from page/post metaboxes for a specific page.", "mk_framework"),
+        "id" => "disable_share_count",
+        "default" => 'false',
+        "type" => "toggle"
+    ),
+    array(
+        "name" => __("分享媒体设置", "mk_framework"),
+        "desc" => __("You can enable preloader globally for all pages of the site, or enable it from page/post metaboxes for a specific page.", "mk_framework"),
+        "id" => "disable_share_media",
+        "default" => array(
+            'body'
+        ),
+        "options" => $share_media,
+        "type" => "checkbox"
+    ),
+    array(
+        "type" => "groupset_end"
     ),
     array(
         "name" => __("Header Social Networks Style", "mk_framework"),
