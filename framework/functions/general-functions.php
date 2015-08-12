@@ -12,6 +12,14 @@ function get_ssl_avatar($avatar) {
 }
 add_filter('get_avatar', 'get_ssl_avatar');
 
+//移除顶部管理条
+add_filter('show_admin_bar', 'hide_admin_bar');
+function hide_admin_bar($flag) {
+  return false;
+}
+
+
+
 if (!function_exists('mk_theme_options')) {
      function mk_theme_options()
      {
