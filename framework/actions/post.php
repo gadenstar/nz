@@ -10,6 +10,11 @@
  */
 add_action('blog_similar_posts', 'mk_blog_similar_posts');
 add_action('portfolio_similar_posts', 'mk_portfolio_similar_posts');
+
+add_action('nz_post_footer', 'nz_post_copyright');
+add_action('nz_post_footer', 'nz_post_share');
+add_action('nz_post_footer', 'nz_post_tags');
+
 /**
  */
 if (!function_exists('mk_blog_similar_posts'))
@@ -352,7 +357,81 @@ if (!function_exists('mk_portfolio_similar_posts'))
         }
     }
 /***************************************/
+if (!function_exists('nz_post_copyright')){
+    function nz_post_copyright(){
+        global  $post, $mk_options;
+        if($mk_options['diable_single_carried'] == 'true' && get_post_meta( $post->ID, '_disable_carried', true ) != 'false') :
+        ?>
+            <p class="post-copyright uk-hidden-small">
+            转载请注明出处<a href="<?php bloginfo('url');?>"><?php bloginfo( );?></a> » <a href="<?php the_permalink(); ?>"><?php the_title( );?></a>
+            </p>
+        <?php
+        endif;
+    }
+}
 
+if (!function_exists('nz_post_share')){
+    function nz_post_share(){
+        global  $post, $mk_options;
+        if($mk_options['enable_single_related_posts'] == 'true' && get_post_meta( $post->ID, '_disable_related_posts', true ) != 'false'):
+            $html = '';
+        $shares = $mk_options['disable_share_media'];
+        foreach ($shares as $value) {
+            $html .= '<a class="bds_'.$value.'" data-cmd="'.$value.'"></a>';
+        }
+        //$html .= '<span class="bds_count" data-cmd="count"></span>';
+        $html .= ($mk_options['disable_share_count'] == 'true') ? '<span class="bds_count" data-cmd="count"></span>' : '' ;
+        echo '<div class="action-share bdsharebuttonbox">分享：'.$html.'</div>';
+        ?>
+            <script>
+
+                window._bd_share_config = {
+                    common : {
+                        bdText : '',
+                        bdDesc : '',
+                        bdUrl : '',
+                        bdPic : ''
+                    },
+                    share : [{
+                        //"bdSize" : 24
+                        bdCustomStyle: '<?php echo THEME_STYLES; ?>' + '/share.css'
+                    }]
+                    //,
+                    // slide : [{
+                    //     bdImg : 0,
+                    //     bdPos : "right",
+                    //     bdTop : 100
+                    // }],
+                    // image : [{
+                    //     viewType : 'list',
+                    //     viewPos : 'top',
+                    //     viewColor : 'black',
+                    //     viewSize : '24',
+                    //     viewList : ['qzone','tsina','huaban','tqq','renren']
+                    // }],
+                    // selectShare : [{
+                    //     "bdselectMiniList" : ['qzone','tqq','kaixin001','bdxc','tqf']
+                    // }]
+                }
+                with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+            </script>
+        <?php
+        endif;
+    }
+}
+
+if (!function_exists('nz_post_tags')){
+    function nz_post_tags(){
+        global  $post, $mk_options;
+        if($mk_options['diable_single_tags'] == 'true' && get_post_meta( $post->ID, '_disable_tags', true ) != 'false') :
+        ?>
+            <p class="post-tags">
+            <?php the_tags( '标签: ', ' ', '' );?>
+            </p>
+        <?php
+        endif;
+    }
+}
 
 
 
