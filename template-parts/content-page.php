@@ -7,11 +7,12 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+<article id="post-<?php the_ID(); ?>" <?php post_class(''); ?>>
+	<div class="post-inner ">
+	<header class="entry-header uk-text-center">
+		<?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>
 	</header><!-- .entry-header -->
-
+	<hr class="small-separetor"></hr>
 	<div class="entry-content">
 		<?php the_content(); ?>
 		<?php
@@ -25,5 +26,6 @@
 	<footer class="entry-footer">
 		<?php edit_post_link( esc_html__( 'Edit', 'nz' ), '<span class="edit-link">', '</span>' ); ?>
 	</footer><!-- .entry-footer -->
+	</div>
 </article><!-- #post-## -->
 
