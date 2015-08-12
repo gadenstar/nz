@@ -39,7 +39,19 @@ get_header(); ?>
 
 			<?php get_template_part( 'template-parts/content', 'none' ); ?>
 
-		<?php endif; ?>
+						<?php get_template_part( 'template-parts/content', 'none' ); ?>
+
+					<?php endif; ?>
+					<div id="navigation" class="page-nav uk-width-1-1">
+						<div class="navigation-inner">
+							<?php
+								$navigation = ($mk_options['infinite-scroll'] == 'true') ? next_posts_link(__('MORE')) : nz_posts_navigation(5);
+							?>
+						</div>
+					</div>
+				</div>
+
+			</main><!-- #main -->
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
