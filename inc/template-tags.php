@@ -7,33 +7,33 @@
  * @package nz
  */
 
-if ( ! function_exists( 'the_posts_navigation' ) ) :
+if ( ! function_exists( 'nz_posts_navigation' ) ) :
 /**
  * Display navigation to next/previous set of posts when applicable.
  *
  * @todo Remove this function when WordPress 4.3 is released.
  */
-function the_posts_navigation() {
-	// Don't print empty markup if there's only one page.
-	if ( $GLOBALS['wp_query']->max_num_pages < 2 ) {
-		return;
-	}
-	?>
-	<nav class="navigation posts-navigation" role="navigation">
-		<h2 class="screen-reader-text"><?php esc_html_e( 'Posts navigation', 'nz' ); ?></h2>
-		<div class="nav-links">
+function nz_posts_navigation($range = 9){
+    	global $paged, $wp_query;
+    	$max_page = '';
+    	if ( !$max_page ) {$max_page = $wp_query->max_num_pages;}
+    	if($max_page > 1){if(!$paged){$paged = 1;}
+    	if($paged > 2){echo "<a href='" . get_pagenum_link(1) . "' class='extend' title='跳转到首页'> 返回首页 </a>";}
+    	if($paged > 1 ){echo '<a class="prev" href="'.esc_html( get_pagenum_link( $paged - 1 ) ).'">上一页</a>';}
 
-			<?php if ( get_next_posts_link() ) : ?>
-			<div class="nav-previous"><?php next_posts_link( esc_html__( 'Older posts', 'nz' ) ); ?></div>
-			<?php endif; ?>
+        if($max_page > $range){
+    		if($paged < $range){for($i = 1; $i <= ($range + 1); $i++){echo "<a href='" . get_pagenum_link($i) ."'";
+    		if($i==$paged)echo " class='current'";echo ">$i</a>";}}
+        elseif($paged >= ($max_page - ceil(($range/2)))){
+    		for($i = $max_page - $range; $i <= $max_page; $i++){echo "<a href='" . get_pagenum_link($i) ."'";
+    		if($i==$paged)echo " class='current'";echo ">$i</a>";}}
+    	elseif($paged >= $range && $paged < ($max_page - ceil(($range/2)))){
+    		for($i = ($paged - ceil($range/2)); $i <= ($paged + ceil(($range/2))); $i++){echo "<a href='" . get_pagenum_link($i) ."'";if($i==$paged) echo " class='current'";echo ">$i</a>";}}}
+        else{for($i = 1; $i <= $max_page; $i++){echo "<a href='" . get_pagenum_link($i) ."'";
+        if($i==$paged)echo " class='current'";echo ">$i</a>";}}
 
-			<?php if ( get_previous_posts_link() ) : ?>
-			<div class="nav-next"><?php previous_posts_link( esc_html__( 'Newer posts', 'nz' ) ); ?></div>
-			<?php endif; ?>
-
-		</div><!-- .nav-links -->
-	</nav><!-- .navigation -->
-	<?php
+    		if($paged < $max_page ){echo '<a class="next" href="'.esc_html( get_pagenum_link( $paged + 1 ) ).'">下一页</a>';}
+        if($paged < $max_page - 1){echo "<a href='" . get_pagenum_link($max_page) . "' class='extend' title='跳转到最后一页'> 最后一页 </a>";}}
 }
 endif;
 
