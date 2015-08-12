@@ -61,6 +61,27 @@ $font_replacement_objects = array(
 	'.mk-skill-meter-title' => 'Skill Meter Titles',
 );
 
+$share_media = array(
+				'qzone'=>'<i class="mk-icon-qq"></i>QQ',
+        'tsina'=>'新浪微博',
+        'weixin'=>'微信',
+        'tqq'=>'腾讯微博',
+        'sqq'=>'QQ好友',
+        'bdhome'=>'百度新首页',
+        'tqf'=>'腾讯朋友',
+        'renren'=>'人人',
+        'diandian'=>'点点',
+        'youdao'=>'有道',
+        'ty'=>'天涯',
+        'kaixin001'=>'开心',
+        'taobao'=>'淘宝',
+        'douban'=>'豆瓣',
+        'fbook'=>'Facebook',
+        'twi'=>'Twitter',
+        'mail'=>'邮件分享',
+        'copy'=>'复制链接',
+);
+
 /*
  **
  **
@@ -126,7 +147,7 @@ if (!function_exists("mk_fonts_list")) {
 
 			echo '<option data-type="google" ';
 			if ($default == $google_webfont) {
-				echo ' selected="selected"'; 
+				echo ' selected="selected"';
 			}
 			echo ' value="' . $google_webfont . '" >- Google Fonts - ' . str_replace('+', ' ', $google_webfont) . '</option>';
 		}
