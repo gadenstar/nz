@@ -1,10 +1,13 @@
 <?php
 
+// delete wp_head code
+remove_action('wp_head', 'feed_links_extra', 3);
+remove_action('wp_head', 'rsd_link');
+remove_action('wp_head', 'wlwmanifest_link');
+remove_action('wp_head', 'index_rel_link');
+remove_action('wp_head', 'start_post_rel_link', 10, 0);
+remove_action('wp_head', 'wp_generator');
 
-
-/*
- * Convert theme settings to a globaly accessible vaiable throught the theme.
- */
 //调用ssl 头像链接
 function get_ssl_avatar($avatar) {
    $avatar = preg_replace('/.*\/avatar\/(.*)\?s=([\d]+)&.*/','<img src="https://secure.gravatar.com/avatar/$1?s=$2&d=mm" class="avatar avatar-$2" height="$2" width="$2">',$avatar);
