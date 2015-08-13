@@ -904,25 +904,27 @@ Posts types metaboxes to show the selected items
 	}
 	mk_posttype_metabox();
 
-	function nz_posttype_metabox() {
-		post_choices = jQuery('#disable_share2_wrapper');
-		post_choices.hide();
-		source_val = jQuery('#disable_share').val();
-		if (source_val == 'true') {
-			jQuery('#disable_share2_wrapper').show();
+	function mk_carried_metabox() {
+		carried_choices = jQuery('#_from_title_wrapper, #_from_url_wrapper, #_translation_title_wrapper, #_translation_url_wrapper');
+		carried_choices.hide();
+		source_val = jQuery('#_carried').val();
+		if (source_val == 'from') {
+			jQuery('#_from_title_wrapper, #_from_url_wrapper').show();
+		}	else if (this_val == 'translation') {
+			jQuery('#_translation_title_wrapper, #_translation_url_wrapper').show();
 		}
 
-
-		jQuery('#disable_share').change(function() {
+		jQuery('#_carried').change(function() {
 			this_val = jQuery(this).val();
-			post_choices.hide();
-			if (this_val == 'true') {
-				jQuery('#disable_share2_wrapper').show();
+			carried_choices.hide();
+			if (this_val == 'from') {
+				jQuery('#_from_title_wrapper, #_from_url_wrapper').show();
+			} else if (this_val == 'translation') {
+				jQuery('#_translation_title_wrapper, #_translation_url_wrapper').show();
 			}
 		});
-
 	}
-	nz_posttype_metabox();
+	mk_carried_metabox();
 
 	/*
 **
