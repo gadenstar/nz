@@ -136,7 +136,44 @@ $options = array(
     "default" => 'true',
     "type" => "toggle"
   ),
-
+  array(
+    "name" => __("版权申明", "mk_framework" ),
+    "desc" => __( "You can set the post type using this option.", "mk_framework" ),
+    "id" => "_carried",
+    "default" => 'yes',
+    "preview" => false,
+    "options" => array(
+      "yes" => '允许转载',
+      "no" => '不允许转载',
+      "from" => '转载自',
+      "translation" => '翻译自',
+    ),
+    "type" => "select"
+  ),
+  array(
+    "name" => __( "原文标题", "mk_framework" ),
+    "desc" => __( "Fill this Field If you would like to state the author of the audio file you are about to post.", "mk_framework" ),
+    "id" => "_from_title",
+    "type" => "text"
+  ),
+  array(
+    "name" => __( "原文链接", "mk_framework" ),
+    "desc" => __( "Fill this Field If you would like to state the author of the audio file you are about to post.", "mk_framework" ),
+    "id" => "_from_url",
+    "type" => "text"
+  ),
+    array(
+    "name" => __( "原文标题", "mk_framework" ),
+    "desc" => __( "Fill this Field If you would like to state the author of the audio file you are about to post.", "mk_framework" ),
+    "id" => "_translation_title",
+    "type" => "text"
+  ),
+  array(
+    "name" => __( "原文链接", "mk_framework" ),
+    "desc" => __( "Fill this Field If you would like to state the author of the audio file you are about to post.", "mk_framework" ),
+    "id" => "_translation_url",
+    "type" => "text"
+  ),
   array(
     "name" => __("Post Type", "mk_framework" ),
     "desc" => __( "You can set the post type using this option.", "mk_framework" ),
