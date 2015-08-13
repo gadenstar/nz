@@ -15,6 +15,8 @@ add_action('nz_post_footer', 'nz_post_copyright');
 add_action('nz_post_footer', 'nz_post_share');
 add_action('nz_post_footer', 'nz_post_tags');
 
+add_action('nz_post_footer', 'nz_posts_related');
+
 /**
  */
 if (!function_exists('mk_blog_similar_posts'))
@@ -373,7 +375,8 @@ if (!function_exists('nz_post_copyright')){
 if (!function_exists('nz_post_share')){
     function nz_post_share(){
         global  $post, $mk_options;
-        if($mk_options['enable_single_related_posts'] == 'true' && get_post_meta( $post->ID, '_disable_related_posts', true ) != 'false'):
+        //if($mk_options['disable_share'] == 'true' && get_post_meta( $post->ID, '_disable_related_posts', true ) != 'false'):
+        if($mk_options['disable_share'] == 'true' ):
             $html = '';
         $shares = $mk_options['disable_share_media'];
         foreach ($shares as $value) {
@@ -423,7 +426,8 @@ if (!function_exists('nz_post_share')){
 if (!function_exists('nz_post_tags')){
     function nz_post_tags(){
         global  $post, $mk_options;
-        if($mk_options['diable_single_tags'] == 'true' && get_post_meta( $post->ID, '_disable_tags', true ) != 'false') :
+       // if($mk_options['diable_single_tags'] == 'true' && get_post_meta( $post->ID, '_disable_tags', true ) != 'false') :
+        if($mk_options['diable_single_tags'] == 'true') :
         ?>
             <p class="post-tags">
             <?php the_tags( '标签: ', ' ', '' );?>
@@ -433,11 +437,21 @@ if (!function_exists('nz_post_tags')){
     }
 }
 
+if (!function_exists('nz_posts_related')){
 
+    function nz_posts_related(){
+        global  $post, $mk_options;
+        //if($mk_options['enable_single_related_posts'] == 'true' && get_post_meta( $post->ID, '_disable_tags', true ) != 'false') :
+        if($mk_options['enable_single_related_posts'] == 'true') :
+        ?>
+            <div class="post-related">
+            <?php _posts_related();?>
+            </div>
+        <?php
+        endif;
+    }
 
-
-
-
+}
 
 
 
