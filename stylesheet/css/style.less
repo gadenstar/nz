@@ -42,6 +42,20 @@ input[type=email],input[type=search], input[type=password], input[type=tel], inp
 .br(@r:4px) {
   border-radius: @r;
 }
+.h3-title {
+  border-bottom: 2px solid #E7E7E7;
+  position: relative;
+  line-height: 34px;
+  &::after {
+    content: "";
+    position: absolute;
+    width: 60px;
+    height: 2px;
+    background: #E74C3C none repeat scroll 0% 0%;
+    bottom: -2px;
+    left: 0px;
+  }
+}
 .border {
   border: 1px solid @color-border;
 }
@@ -476,6 +490,24 @@ ul {list-style: none;}
           }
         }
       }
+      .post-related {
+        a {
+          color: #888;
+          &:hover {
+            color: @color-orange;
+          }
+        }
+        h3 {
+          &::after {
+            width:80px;
+          }
+        }
+        ul{
+          list-style: outside none disc;
+          color: #BBB;
+          padding-left: 15px;
+        }
+      }
     }
     .post-navigation {
       padding: 10px 30px;
@@ -707,17 +739,8 @@ ul {list-style: none;}
 #comments {
   color: #888;
   .comments-title {
-    border-bottom: 2px solid #e7e7e7;
-    position: relative;
-    line-height: 34px;
     &::after {
-      content: '';
-      position: absolute;
       width: 100px;
-      height: 2px;
-      background: @color-orange;
-      bottom: -2px;
-      left: 0;
     }
   }
   .comment-list {

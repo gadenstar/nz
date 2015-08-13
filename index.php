@@ -47,6 +47,7 @@ get_header(); ?>
 								$navigation = ($mk_options['infinite-scroll'] == 'true') ? next_posts_link(__('MORE')) : nz_posts_navigation(5);
 							?>
 						</div>
+
 					</div>
 				</div>
 

@@ -24,6 +24,7 @@
 
 		<?php do_action('nz_post_footer'); ?>
 
+
 		<?php
 			wp_link_pages( array(
 				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'nz' ),

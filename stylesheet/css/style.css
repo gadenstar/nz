@@ -41,6 +41,20 @@ textarea:focus {
   box-shadow: none;
   border-color: #e74c3c;
 }
+.h3-title {
+  border-bottom: 2px solid #E7E7E7;
+  position: relative;
+  line-height: 34px;
+}
+.h3-title::after {
+  content: "";
+  position: absolute;
+  width: 60px;
+  height: 2px;
+  background: #E74C3C none repeat scroll 0% 0%;
+  bottom: -2px;
+  left: 0px;
+}
 .border {
   border: 1px solid #ebebeb;
 }
@@ -390,6 +404,24 @@ ul {
 .post-list .post-content .post-inner .post-tags a:hover {
   background: #d62c1a;
 }
+.post-list .page .post-inner .post-related a,
+.post-list .post-content .post-inner .post-related a {
+  color: #888;
+}
+.post-list .page .post-inner .post-related a:hover,
+.post-list .post-content .post-inner .post-related a:hover {
+  color: #e74c3c;
+}
+.post-list .page .post-inner .post-related h3::after,
+.post-list .post-content .post-inner .post-related h3::after {
+  width: 80px;
+}
+.post-list .page .post-inner .post-related ul,
+.post-list .post-content .post-inner .post-related ul {
+  list-style: outside none disc;
+  color: #BBB;
+  padding-left: 15px;
+}
 .post-list .page .post-navigation,
 .post-list .post-content .post-navigation {
   padding: 10px 30px;
@@ -575,19 +607,8 @@ ul {
 #comments {
   color: #888;
 }
-#comments .comments-title {
-  border-bottom: 2px solid #e7e7e7;
-  position: relative;
-  line-height: 34px;
-}
 #comments .comments-title::after {
-  content: '';
-  position: absolute;
   width: 100px;
-  height: 2px;
-  background: #e74c3c;
-  bottom: -2px;
-  left: 0;
 }
 #comments .comment-list {
   margin: 0;
