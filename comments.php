@@ -23,14 +23,14 @@ if ( post_password_required() ) {
 	<?php // You can start editing here -- including this comment! ?>
 
 	<?php if ( have_comments() ) : ?>
-		<h4 class="comments-title">
+		<h3 class="comments-title h3-title">
 			<?php
 				printf( // WPCS: XSS OK.
 					esc_html( _nx( '1 Comments ', '%1$s Comments ', get_comments_number(), 'comments title', 'nz' ) ),
 					number_format_i18n( get_comments_number() )
 				);
 			?>
-		</h4>
+		</h3>
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
 		<nav id="comment-nav-above" class="navigation comment-navigation" role="navigation">
