@@ -6,7 +6,8 @@ function theme_admin_add_script()
      wp_enqueue_script('jquery-ui-slider');
      wp_enqueue_style('wp-color-picker');
      wp_enqueue_script('wp-color-picker');
-     wp_enqueue_script('admin-scripts', THEME_ADMIN_ASSETS_URI . '/js/min/theme-backend-scripts-ck.js', array(
+     //wp_enqueue_script('admin-scripts', THEME_ADMIN_ASSETS_URI . '/js/min/theme-backend-scripts-ck.js', array(
+     wp_enqueue_script('admin-scripts', THEME_ADMIN_ASSETS_URI . '/js/theme-backend-scripts.js', array(
           'jquery'
      ), $theme_data['Version'], true);
      wp_enqueue_script('chosen', THEME_ADMIN_ASSETS_URI . '/js/chosen.min.js', array(
