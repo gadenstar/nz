@@ -1,0 +1,27 @@
+
+
+    <?php
+    /*******跳转模板*******/
+    global $wp_rewrite,$wp_query;
+    //从请求的地址中获取文章ID
+    if( isset($wp_query->query_vars['pid']) && $wp_query->query_vars['pid']!='' )
+        $post_id = $wp_query->query_vars['pid'];
+    else
+        $post_id = 0;
+    if( $post_id ){
+        //获取跳转链接
+        $buy_link = get_post_meta($post_id,'_buy_link',true);
+        $buy_link = htmlspecialchars_decode($buy_link);//将html实体换回预定义字符
+        $buy_link = trim($buy_link);
+        $buy_link = addhttp(trim($buy_link));
+        if($buy_link){
+            //跳转
+            wp_redirect($buy_link, 301);
+        }else{
+            //跳转到首页
+            wp_redirect(get_bloginfo('url'), 301);
+        }
+    }else{
+        //无ID则重定向到首页
+        wp_redirect(get_bloginfo('url'), 301);
+    } ?>

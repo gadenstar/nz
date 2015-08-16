@@ -20,8 +20,26 @@ add_filter('show_admin_bar', 'hide_admin_bar');
 function hide_admin_bar($flag) {
   return false;
 }
-
-
+//文章内容外链跳转
+add_filter('the_content','the_content_Jump',999);
+function the_content_Jump($content){
+    preg_match_all('/<a(.*)href="(.*?)"(.*)>/',$content,$matches);
+    if($matches){
+      foreach($matches[2] as $val){
+        if(strpos($val,'://')!==false && strpos($val,'nofollow')===false && strpos($val,home_url())===false){
+          $n_val = base64_encode($val);
+          $content=str_replace("href=\"$val\"", "href=\"".home_url()."/go/?url=$n_val\" target=\"_blank\" ",$content);
+      }
+    }
+  }
+  return $content;
+}
+function addhttp($url) {
+        if (!preg_match("~^(?:f|ht)tps?://~i", $url)) {
+            $url = "http://" . $url;
+        }
+        return $url;
+}
 
 if (!function_exists('mk_theme_options')) {
      function mk_theme_options()

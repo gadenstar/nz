@@ -16,6 +16,59 @@ add_action( 'theme_breadcrumbs', 'mk_theme_breadcrumbs' );
 add_action( 'quick_contact', 'mk_quick_contact' );
 add_action( 'footer_menu', 'mk_footer_menu' );
 
+/***/
+//内部链接跳转外部链接
+// add_action( 'load-themes.php', 'nz_flush_rewrite_rules' ); //启用主题的时候
+// add_action('generate_rewrite_rules', 'nz_rewrite_rules' ); //添加重写规则
+// add_action('query_vars', 'nz_query_vars');
+// add_action("template_redirect", 'nz_template_redirect');
+
+
+
+    // //为不带http的地址添加 http
+    // function addhttp($url) {
+    //     if (!preg_match("~^(?:f|ht)tps?://~i", $url)) {
+    //         $url = "http://" . $url;
+    //     }
+    //     return $url;
+    // }
+
+    // /********添加query变量************/
+    // function nz_query_vars($public_query_vars) {
+    //     $public_query_vars[] = 'my_custom_page_type';
+    //     $public_query_vars[] = 'pid';
+    //     return $public_query_vars;
+    // }
+
+    // /************重写规则*************/
+    // function nz_rewrite_rules( $wp_rewrite ){
+    // $new_rules = array(
+    // 'go/?([0-9]{1,})/?$' => 'index.php?my_custom_page_type=buy_page&pid='.$wp_rewrite->preg_index(1),
+    // );
+    // $wp_rewrite->rules = $new_rules + $wp_rewrite->rules;
+    // }
+
+    // /************模板载入规则****************/
+    // function nz_template_redirect(){
+    //     global $wp,$wp_query,$wp_rewrite;
+    //     if( !isset($wp_query->query_vars['my_custom_page_type']) )
+    //         return;
+    //     $reditect_page =  $wp_query->query_vars['my_custom_page_type'];
+
+    //     if ($reditect_page == "buy_page"){
+    //         include(get_template_directory().'/go.php');
+    //         die();
+    //     }
+    // }
+
+    // /*********更新重写规则***************/
+    // function nz_flush_rewrite_rules() {
+    //     global $pagenow, $wp_rewrite;
+
+    //     if ( 'themes.php' == $pagenow && isset( $_GET['activated'] ) )
+    //         $wp_rewrite->flush_rules();
+    // }
+
 
 
 

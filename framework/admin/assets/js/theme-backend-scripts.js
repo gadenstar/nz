@@ -904,19 +904,19 @@ Posts types metaboxes to show the selected items
 	}
 	mk_posttype_metabox();
 
-	function mk_carried_metabox() {
-		carried_choices = jQuery('#_from_title_wrapper, #_from_url_wrapper, #_translation_title_wrapper, #_translation_url_wrapper');
-		carried_choices.hide();
+	function nz_carried_metabox() {
+		post_choices = jQuery('#_from_title_wrapper, #_from_url_wrapper, #_translation_title_wrapper, #_translation_url_wrapper');
+		post_choices.hide();
 		source_val = jQuery('#_carried').val();
 		if (source_val == 'from') {
 			jQuery('#_from_title_wrapper, #_from_url_wrapper').show();
-		}	else if (this_val == 'translation') {
+		}	else if (source_val == 'translation') {
 			jQuery('#_translation_title_wrapper, #_translation_url_wrapper').show();
 		}
 
 		jQuery('#_carried').change(function() {
 			this_val = jQuery(this).val();
-			carried_choices.hide();
+			post_choices.hide();
 			if (this_val == 'from') {
 				jQuery('#_from_title_wrapper, #_from_url_wrapper').show();
 			} else if (this_val == 'translation') {
@@ -924,7 +924,7 @@ Posts types metaboxes to show the selected items
 			}
 		});
 	}
-	mk_carried_metabox();
+	nz_carried_metabox();
 
 	/*
 **
