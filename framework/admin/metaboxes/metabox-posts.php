@@ -281,12 +281,24 @@ $options = array(
     "default" =>'true',
     "type" => "toggle"
   ),
+
   array(
     "name" => __( "Related Posts", "mk_framework" ),
     "desc" => __( "If you do not want to show related posts disable the post here", "mk_framework" ),
     "id" => "_disable_related_posts",
     "default" =>'true',
     "type" => "toggle"
+  ),
+  array(
+    "name" => __("相关文章数量", "mk_framework"),
+    "desc" => __("This option defines the main content max-width. default value is 1140px", "mk_framework"),
+    "id" => "grid_width",
+    "default" => "4",
+    "min" => "4",
+    "max" => "8",
+    "step" => "2",
+    "unit" => '篇',
+    "type" => "range"
   ),
   array(
     "name" => __( "About Author Box", "mk_framework" ),
