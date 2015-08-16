@@ -2,7 +2,9 @@
 global $post,
 $mk_options;
 
-$single_layout = $mk_options['single_layout'];
+//$single_layout = $mk_options['single_layout'];
+$single_layout = (get_post_meta( $post->ID, '_layout', true ) != 'default') ? get_post_meta( $post->ID, '_layout', true ): $mk_options['single_layout'] ;
+
 if ($single_layout!='full') {
 	if ($single_layout == 'left') {
 		$layout_css = 'uk-width-medium-2-3 uk-width-large-3-4 uk-flex-order-last';
@@ -25,7 +27,6 @@ get_header(); ?>
 		<?php while ( have_posts() ) : the_post(); ?>
 
 			<?php get_template_part( 'template-parts/content', 'single' ); ?>
-			<?php echo $single_layout;?>
 			<?php //the_post_navigation(); ?>
 
 			<?php
