@@ -362,21 +362,32 @@ if (!function_exists('mk_portfolio_similar_posts'))
 if (!function_exists('nz_post_copyright')){
     function nz_post_copyright(){
         global  $post, $mk_options;
-        if($mk_options['diable_single_carried'] == 'true' && get_post_meta( $post->ID, '_disable_carried', true ) != 'false') :
-        ?>
-            <p class="post-copyright uk-hidden-small carried-yes">
-            转载请注明出处<a href="<?php bloginfo('url');?>"><?php bloginfo( );?></a> » <a href="<?php the_permalink(); ?>"><?php the_title( );?></a>
-            </p>
-            <p class="post-copyright uk-hidden-small carried-no">
-            请尊重我们的辛苦付出，未经允许，请不要转载 <a href="<?php bloginfo('url');?>"><?php bloginfo( );?></a> 的文章！
-            </p>
-            <p class="post-copyright uk-hidden-small carried-from">
-            本文转载自 <a href="<?php bloginfo('url');?>"><?php bloginfo( );?></a> ,感谢原作者的辛苦付出，转载请注明出处！
-            </p>
-            <p class="post-copyright uk-hidden-small carried-translation">
-            本文翻译自 <a href="<?php bloginfo('url');?>"><?php bloginfo( );?></a> ,感谢原作者的辛苦付出，转载请注明出处！
-            </p>
-        <?php
+        if($mk_options['diable_single_carried'] == 'true' && get_post_meta( $post->ID, '_carried', true ) != '') :
+            if (get_post_meta( $post->ID, '_carried', true ) == 'yes') {
+                ?>
+                <p class="post-copyright uk-hidden-small carried-yes">
+                转载请注明出处<a href="<?php bloginfo('url');?>"><?php bloginfo( );?></a> » <a href="<?php the_permalink(); ?>"><?php the_title( );?></a>
+                </p>
+                <?php
+            } elseif (get_post_meta( $post->ID, '_carried', true ) == 'no') {
+                ?>
+                <p class="post-copyright uk-hidden-small carried-no">
+                请尊重我们的辛苦付出，未经允许，请不要转载 <a href="<?php bloginfo('url');?>"><?php bloginfo( );?></a> 的文章！
+                </p>
+                <?php
+            } elseif (get_post_meta( $post->ID, '_carried', true ) == 'from') {
+                ?>
+                <p class="post-copyright uk-hidden-small carried-from">
+                本文转载自 <a href="<?php echo addhttp(get_post_meta( $post->ID, '_from_url', true ));?>"><?php echo get_post_meta( $post->ID, '_from_title', true );?></a> ,感谢原作者的辛苦付出，转载请注明出处！
+                </p>
+                <?php
+            }elseif (get_post_meta( $post->ID, '_carried', true ) == 'translation') {
+               ?>
+               <p class="post-copyright uk-hidden-small carried-translation">
+                本文翻译自 <a href="<?php echo addhttp(get_post_meta( $post->ID, '_translation_url', true ));?>"><?php echo get_post_meta( $post->ID, '_translation_title', true );?></a> ,感谢原作者的辛苦付出，转载请注明出处！
+                </p>
+               <?php
+            }
         endif;
     }
 }
